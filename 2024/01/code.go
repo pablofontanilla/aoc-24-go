@@ -7,8 +7,6 @@ import (
 	"strconv"
 )
 
-const file = "input-example.txt"
-
 func main() {
 	aoc.Harness(run)
 }
@@ -30,6 +28,16 @@ func absDiffInt(x, y int) int {
 	return x - y
 }
 
+func getNumTimesInList(frequencyColumn []int, orderedColumn []int, searchedNumber int) int {
+
+	for i := range frequencyColumn {
+		if orderedColumn[i] == searchedNumber {
+			return frequencyColumn[i]
+		}
+	}
+	return 0
+}
+
 // on code change, run will be executed 4 times:
 // 1. with: false (part1), and example input
 // 2. with: true (part2), and example input
@@ -49,7 +57,22 @@ func run(part2 bool, input string) any {
 
 	if part2 {
 
-		return "not implemented"
+		var totalSimilarity int = 0
+
+		var rightColumnFrequenciesString, _ = script.Echo(input).Column(2).Freq().Column(1).Slice()
+		var rightColumnNumbersString, _ = script.Echo(input).Column(2).Freq().Column(2).Slice()
+		var rightColumnFrequencies = stringToIntSlice(rightColumnFrequenciesString)
+		var rightColumnNumbers = stringToIntSlice(rightColumnNumbersString)
+
+		for i := range leftNumbers {
+			// index is the index where we are
+			// element is the element from someSlice for where we are
+			var number = leftNumbers[i]
+			var timesNumber = getNumTimesInList(rightColumnFrequencies, rightColumnNumbers, number)
+			totalSimilarity += number * timesNumber
+		}
+
+		return totalSimilarity
 	}
 	// solve part 1 here
 
