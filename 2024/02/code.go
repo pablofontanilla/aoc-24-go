@@ -100,9 +100,6 @@ func RemoveIndex(s []string, index int) []string {
 }
 
 func deleteElement(slice []string, index int) []string {
-	if index >= len(slice) {
-		return append(slice[:index])
-	}
 	return append(slice[:index], slice[index+1:]...)
 }
 
