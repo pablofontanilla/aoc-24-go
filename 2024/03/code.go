@@ -2,6 +2,8 @@ package main
 
 import (
 	"github.com/jpillora/puzzler/harness/aoc"
+	"regexp"
+	"strconv"
 )
 
 func main() {
@@ -15,10 +17,23 @@ func main() {
 // 4. with: true (part2), and user input
 // the return value of each run is printed to stdout
 func run(part2 bool, input string) any {
-	// when you're ready to do part 2, remove this "not implemented" block
+
+	// Compile the regular expression
+	re := regexp.MustCompile(`mul\((\d+),(\d+)\)`)
+
+	// Find all matches
+	matches := re.FindAllStringSubmatch(input, -1)
+
+	totalSum := 0
+	// Iterate through the matches
+	for _, match := range matches {
+		num1, _ := strconv.Atoi(match[1])
+		num2, _ := strconv.Atoi(match[2])
+		totalSum += num1 * num2
+	}
 	if part2 {
-		return "not implemented"
+		return "42"
 	}
 	// solve part 1 here
-	return 42
+	return totalSum
 }
