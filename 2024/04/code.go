@@ -20,7 +20,7 @@ type Position struct {
 var directions = []Position{{-1, 1}, {0, 1}, {1, 1}, {1, 0}, {1, -1}, {0, -1}, {-1, -1}, {-1, 0}}
 
 func getStartingPositions(character string, grid [][]string) []Position {
-	results := []Position{}
+	var results = []Position{}
 	maxX := (int64)(len(grid))
 	maxY := (int64)(len(grid[0]))
 

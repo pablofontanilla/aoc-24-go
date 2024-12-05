@@ -33,7 +33,7 @@ Advent of Code (https://adventofcode.com) is a yearly series of programming ques
 1. Click "**Use this template**" above to fork it into your account
 1. Setup repo, either locally or in codespaces
    * Locally
-      * Install Go from https://go.dev/line/ or from brew, etc
+      * Install Go from https://go.dev/dl/ or from brew, etc
       * Git clone your fork
       * Open in VS Code, and install the Go extension
    * Codespaces
